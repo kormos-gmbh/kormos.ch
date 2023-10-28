@@ -11,25 +11,71 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        min-height: -webkit-fill-available;
       }
+
       h1 {
-        color: #679AD1;
-        font-family: 'Courier New', monospace;
-        border-right: 8px solid #CCCCCC;
-        padding-right: 4px;
-        animation: cursor 1.4s step-end infinite;
-        font-size: 124px;
+        color: #679ad1;
+        font-family: "Courier New", monospace;
+        border-right: 7px solid #cccccc;
+        padding-right: 5px;
+        animation: cursor 1.2s step-end infinite;
+        font-size: calc(10vh);
       }
+
       @keyframes cursor {
-        from, to {
-          border-color: transparent
+        from,
+        to {
+          border-color: transparent;
         }
         50% {
-          border-color: #CCCCCC;
+          border-color: #cccccc;
         }
+      }
+
+      .shake-animation {
+        animation: shake 0.4s ease-in-out;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-10px, -10px);
+        }
+        40% {
+          transform: translate(10px, 10px);
+        }
+        60% {
+          transform: translate(-10px, -10px);
+        }
+        80% {
+          transform: translate(10px, 10px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
     </style>
   </head>
   <body>
     <h1>Kormos</h1>
+    <script>
+      function shake() {
+        const title = document.querySelector("h1");
+        if (title) {
+          title.classList.add("shake-animation");
+          setTimeout(() => title.classList.remove("shake-animation"), 400);
+        }
+      }
+
+      document.addEventListener("click", () => shake());
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Delete" || event.key === "Backspace") {
+          shake();
+        }
+      });
+    </script>
   </body>
 </html>
