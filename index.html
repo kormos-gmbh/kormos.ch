@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Kormos</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
       body {
         background-color: #181818;
@@ -17,7 +18,7 @@
       h1 {
         color: #679ad1;
         font-family: "Courier New", monospace;
-        border-right: 0.12em solid #cccccc;
+        border-right: 0.1em solid #cccccc;
         padding-right: 5px;
         animation: cursor 1.2s step-end infinite;
         font-size: calc(10vh);
@@ -70,7 +71,7 @@
         }
       }
 
-      document.addEventListener("click", () => shake());
+      document.addEventListener("click", shake);
       document.addEventListener("keydown", (event) => {
         if (event.key === "Delete" || event.key === "Backspace") {
           shake();
